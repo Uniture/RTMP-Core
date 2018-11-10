@@ -1,7 +1,7 @@
 package fake
 
 import (
-	"github.com/strengine/core/av"
+	"github.com/strengine/Core/av"
 )
 
 type CodecData struct {

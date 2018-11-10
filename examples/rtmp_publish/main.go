@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/strengine/core/av/avutil"
 	"github.com/strengine/core/av/pktque"
 	"github.com/strengine/core/format"
-	"github.com/strengine/core/av/avutil"
 	"github.com/strengine/core/format/rtmp"
 )
 
@@ -24,4 +24,3 @@ func main() {
 	file.Close()
 	conn.Close()
 }
-

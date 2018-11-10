@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/strengine/core/utils/bits/pio"
+	"github.com/strengine/Core/utils/bits/pio"
 )
 
 type ParseError struct {

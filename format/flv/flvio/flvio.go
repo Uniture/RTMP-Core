@@ -5,8 +5,8 @@ import (
 	"io"
 	"time"
 
-	"github.com/strengine/core/av"
-	"github.com/strengine/core/utils/bits/pio"
+	"github.com/strengine/Core/av"
+	"github.com/strengine/Core/utils/bits/pio"
 )
 
 func TsToTime(ts int32) time.Duration {

@@ -3,8 +3,8 @@ package rtsp
 import (
 	"time"
 
-	"github.com/strengine/core/av"
-	"github.com/strengine/core/format/rtsp/sdp"
+	"github.com/strengine/Core/av"
+	"github.com/strengine/Core/format/rtsp/sdp"
 )
 
 type Stream struct {

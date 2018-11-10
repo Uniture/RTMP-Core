@@ -4,9 +4,9 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/strengine/core/av"
-	"github.com/strengine/core/utils/bits"
-	"github.com/strengine/core/utils/bits/pio"
+	"github.com/strengine/Core/av"
+	"github.com/strengine/Core/utils/bits"
+	"github.com/strengine/Core/utils/bits/pio"
 )
 
 const (

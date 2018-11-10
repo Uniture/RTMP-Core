@@ -5,7 +5,7 @@ import (
 	"io"
 	"time"
 
-	"github.com/strengine/core/utils/bits/pio"
+	"github.com/strengine/Core/utils/bits/pio"
 )
 
 const (

@@ -3,8 +3,8 @@ package codec
 import (
 	"time"
 
-	"github.com/strengine/core/av"
-	"github.com/strengine/core/codec/fake"
+	"github.com/strengine/Core/av"
+	"github.com/strengine/Core/codec/fake"
 )
 
 type PCMUCodecData struct {

@@ -4,7 +4,7 @@ package pktque
 import (
 	"time"
 
-	"github.com/strengine/core/av"
+	"github.com/strengine/Core/av"
 )
 
 type Filter interface {

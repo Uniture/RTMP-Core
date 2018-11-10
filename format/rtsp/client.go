@@ -16,13 +16,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/strengine/core/av"
-	"github.com/strengine/core/av/avutil"
-	"github.com/strengine/core/codec"
-	"github.com/strengine/core/codec/aacparser"
-	"github.com/strengine/core/codec/h264parser"
-	"github.com/strengine/core/format/rtsp/sdp"
-	"github.com/strengine/core/utils/bits/pio"
+	"github.com/strengine/Core/av"
+	"github.com/strengine/Core/av/avutil"
+	"github.com/strengine/Core/codec"
+	"github.com/strengine/Core/codec/aacparser"
+	"github.com/strengine/Core/codec/h264parser"
+	"github.com/strengine/Core/format/rtsp/sdp"
+	"github.com/strengine/Core/utils/bits/pio"
 )
 
 var ErrCodecDataChange = fmt.Errorf("rtsp: codec data change, please call HandleCodecDataChange()")

@@ -3,8 +3,8 @@ package mp4
 import (
 	"io"
 
-	"github.com/strengine/core/av"
-	"github.com/strengine/core/av/avutil"
+	"github.com/strengine/Core/av"
+	"github.com/strengine/Core/av/avutil"
 )
 
 var CodecTypes = []av.CodecType{av.H264, av.AAC}

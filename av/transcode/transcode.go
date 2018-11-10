@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/strengine/core/av"
-	"github.com/strengine/core/av/pktque"
+	"github.com/strengine/Core/av"
+	"github.com/strengine/Core/av/pktque"
 )
 
 var Debug bool

@@ -5,10 +5,10 @@ import (
 	"io"
 	"time"
 
-	"github.com/strengine/core/av"
-	"github.com/strengine/core/av/avutil"
-	"github.com/strengine/core/av/pktque"
-	"github.com/strengine/core/av/transcode"
+	"github.com/strengine/Core/av"
+	"github.com/strengine/Core/av/avutil"
+	"github.com/strengine/Core/av/pktque"
+	"github.com/strengine/Core/av/transcode"
 )
 
 var Debug bool

@@ -3,8 +3,8 @@ package ts
 import (
 	"io"
 
-	"github.com/strengine/core/av"
-	"github.com/strengine/core/av/avutil"
+	"github.com/strengine/Core/av"
+	"github.com/strengine/Core/av/avutil"
 )
 
 func Handler(h *avutil.RegisterHandler) {

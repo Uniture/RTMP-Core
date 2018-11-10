@@ -1,14 +1,14 @@
 package main
 
 import (
-	"sync"
-	"io"
-	"net/http"
-	"github.com/strengine/core/format"
 	"github.com/strengine/core/av/avutil"
 	"github.com/strengine/core/av/pubsub"
-	"github.com/strengine/core/format/rtmp"
+	"github.com/strengine/core/format"
 	"github.com/strengine/core/format/flv"
+	"github.com/strengine/core/format/rtmp"
+	"io"
+	"net/http"
+	"sync"
 )
 
 func init() {
@@ -78,7 +78,7 @@ func main() {
 
 		if ch != nil {
 			w.Header().Set("Content-Type", "video/x-flv")
-			w.Header().Set("Transfer-Encoding", "chunked")		
+			w.Header().Set("Transfer-Encoding", "chunked")
 			w.Header().Set("Access-Control-Allow-Origin", "*")
 			w.WriteHeader(200)
 			flusher := w.(http.Flusher)

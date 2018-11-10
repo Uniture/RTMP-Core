@@ -1,11 +1,10 @@
-
 package main
 
 import (
 	"github.com/strengine/core/av"
-	"github.com/strengine/core/format"
 	"github.com/strengine/core/av/avutil"
 	"github.com/strengine/core/cgo/ffmpeg"
+	"github.com/strengine/core/format"
 )
 
 // need ffmpeg installed
@@ -37,4 +36,3 @@ func main() {
 
 	file.Close()
 }
-

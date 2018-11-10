@@ -5,10 +5,10 @@ import (
 	"io"
 	"time"
 
-	"github.com/strengine/core/av"
-	"github.com/strengine/core/codec/aacparser"
-	"github.com/strengine/core/codec/h264parser"
-	"github.com/strengine/core/format/ts/tsio"
+	"github.com/strengine/Core/av"
+	"github.com/strengine/Core/codec/aacparser"
+	"github.com/strengine/Core/codec/h264parser"
+	"github.com/strengine/Core/format/ts/tsio"
 )
 
 var CodecTypes = []av.CodecType{av.H264, av.AAC}

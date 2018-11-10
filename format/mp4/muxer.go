@@ -6,11 +6,11 @@ import (
 	"io"
 	"time"
 
-	"github.com/strengine/core/av"
-	"github.com/strengine/core/codec/aacparser"
-	"github.com/strengine/core/codec/h264parser"
-	"github.com/strengine/core/format/mp4/mp4io"
-	"github.com/strengine/core/utils/bits/pio"
+	"github.com/strengine/Core/av"
+	"github.com/strengine/Core/codec/aacparser"
+	"github.com/strengine/Core/codec/h264parser"
+	"github.com/strengine/Core/format/mp4/mp4io"
+	"github.com/strengine/Core/utils/bits/pio"
 )
 
 type Muxer struct {

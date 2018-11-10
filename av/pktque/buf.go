@@ -1,7 +1,7 @@
 package pktque
 
 import (
-	"github.com/strengine/core/av"
+	"github.com/strengine/Core/av"
 )
 
 type Buf struct {

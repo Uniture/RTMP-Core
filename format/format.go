@@ -1,13 +1,13 @@
 package format
 
 import (
-	"github.com/strengine/core/av/avutil"
-	"github.com/strengine/core/format/aac"
-	"github.com/strengine/core/format/flv"
-	"github.com/strengine/core/format/mp4"
-	"github.com/strengine/core/format/rtmp"
-	"github.com/strengine/core/format/rtsp"
-	"github.com/strengine/core/format/ts"
+	"github.com/strengine/Core/av/avutil"
+	"github.com/strengine/Core/format/aac"
+	"github.com/strengine/Core/format/flv"
+	"github.com/strengine/Core/format/mp4"
+	"github.com/strengine/Core/format/rtmp"
+	"github.com/strengine/Core/format/rtsp"
+	"github.com/strengine/Core/format/ts"
 )
 
 func RegisterAll() {

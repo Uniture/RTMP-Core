@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"strings"
-	"github.com/strengine/core/format"
 	"github.com/strengine/core/av/avutil"
+	"github.com/strengine/core/format"
 	"github.com/strengine/core/format/rtmp"
+	"strings"
 )
 
 func init() {

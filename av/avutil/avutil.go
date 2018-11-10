@@ -9,7 +9,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/strengine/core/av"
+	"github.com/strengine/Core/av"
 )
 
 type HandlerDemuxer struct {

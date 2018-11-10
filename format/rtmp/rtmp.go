@@ -15,11 +15,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/strengine/core/av"
-	"github.com/strengine/core/av/avutil"
-	"github.com/strengine/core/format/flv"
-	"github.com/strengine/core/format/flv/flvio"
-	"github.com/strengine/core/utils/bits/pio"
+	"github.com/strengine/Core/av"
+	"github.com/strengine/Core/av/avutil"
+	"github.com/strengine/Core/format/flv"
+	"github.com/strengine/Core/format/flv/flvio"
+	"github.com/strengine/Core/utils/bits/pio"
 )
 
 var Debug bool

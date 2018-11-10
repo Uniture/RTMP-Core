@@ -6,8 +6,8 @@ import (
 	"io"
 	"time"
 
-	"github.com/strengine/core/av"
-	"github.com/strengine/core/utils/bits"
+	"github.com/strengine/Core/av"
+	"github.com/strengine/Core/utils/bits"
 )
 
 // copied from libavcodec/mpeg4audio.h
@@ -46,7 +46,7 @@ const (
 	AOT_DST                         ///< N                       Direct Stream Transfer
 	AOT_ALS                         ///< Y                       Audio LosslesS
 	AOT_SLS                         ///< N                       Scalable LosslesS
-	AOT_SLS_NON_CORE                ///< N                       Scalable LosslesS (non core)
+	AOT_SLS_NON_CORE                ///< N                       Scalable LosslesS (non Core)
 	AOT_ER_AAC_ELD                  ///< N                       Error Resilient Enhanced Low Delay
 	AOT_SMR_SIMPLE                  ///< N                       Symbolic Music Representation Simple
 	AOT_SMR_MAIN                    ///< N                       Symbolic Music Representation Main

@@ -6,9 +6,9 @@ import (
 	"io"
 	"time"
 
-	"github.com/strengine/core/av"
-	"github.com/strengine/core/av/avutil"
-	"github.com/strengine/core/codec/aacparser"
+	"github.com/strengine/Core/av"
+	"github.com/strengine/Core/av/avutil"
+	"github.com/strengine/Core/codec/aacparser"
 )
 
 type Muxer struct {
