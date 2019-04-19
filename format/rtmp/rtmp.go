@@ -10,6 +10,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"log"
 	"net"
 	"net/url"
 	"strings"
@@ -68,6 +69,7 @@ func (self *Server) handleConn(conn *Conn) (err error) {
 		self.HandleConn(conn)
 	} else {
 		if err = conn.prepare(stageCommandDone, 0); err != nil {
+			log.Println(err)
 			return
 		}
 

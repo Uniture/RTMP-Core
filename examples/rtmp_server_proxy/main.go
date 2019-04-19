@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/strengine/core/av/avutil"
-	"github.com/strengine/core/format"
-	"github.com/strengine/core/format/rtmp"
+	"github.com/strengine/Core/av/avutil"
+	"github.com/strengine/Core/format"
+	"github.com/strengine/Core/format/rtmp"
 	"strings"
 )
 
