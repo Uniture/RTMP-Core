@@ -1,18 +1,18 @@
 package main
 
 import (
-	"github.com/strengine/core/av"
-	"github.com/strengine/core/av/avutil"
-	"github.com/strengine/core/av/transcode"
-	"github.com/strengine/core/cgo/ffmpeg"
-	"github.com/strengine/core/format"
-	"github.com/strengine/core/format/rtmp"
+	"github.com/strengine/Core/av"
+	"github.com/strengine/Core/av/avutil"
+	"github.com/strengine/Core/av/transcode"
+	"github.com/strengine/Core/cgo/ffmpeg"
+	"github.com/strengine/Core/format"
+	"github.com/strengine/Core/format/rtmp"
 )
 
 // need ffmpeg with libspeex and libfdkaac installed
 //
 // open http://www.wowza.com/resources/4.4.1/examples/WebcamRecording/FlashRTMPPlayer11/player.html
-// click connect and recored
+// click connect and reCored
 // input camera H264/SPEEX will converted H264/AAC and saved in out.ts
 
 func init() {

@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/strengine/core/av"
-	"github.com/strengine/core/av/avutil"
-	"github.com/strengine/core/cgo/ffmpeg"
-	"github.com/strengine/core/format"
+	"github.com/strengine/Core/av"
+	"github.com/strengine/Core/av/avutil"
+	"github.com/strengine/Core/cgo/ffmpeg"
+	"github.com/strengine/Core/format"
 )
 
 // need ffmpeg installed

@@ -1,14 +1,15 @@
 package main
 
 import (
-	"github.com/strengine/core/av/avutil"
-	"github.com/strengine/core/av/pubsub"
-	"github.com/strengine/core/format"
-	"github.com/strengine/core/format/flv"
-	"github.com/strengine/core/format/rtmp"
 	"io"
 	"net/http"
 	"sync"
+
+	"github.com/strengine/Core/av/avutil"
+	"github.com/strengine/Core/av/pubsub"
+	"github.com/strengine/Core/format"
+	"github.com/strengine/Core/format/flv"
+	"github.com/strengine/Core/format/rtmp"
 )
 
 func init() {
@@ -64,7 +65,7 @@ func main() {
 		}
 
 		avutil.CopyPackets(ch.que, conn)
-
+		// avutil.
 		l.Lock()
 		delete(channels, conn.URL.Path)
 		l.Unlock()
