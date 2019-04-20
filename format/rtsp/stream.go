@@ -3,8 +3,8 @@ package rtsp
 import (
 	"time"
 
-	"github.com/strengine/Core/av"
-	"github.com/strengine/Core/format/rtsp/sdp"
+	"github.com/nulla-go/Core/av"
+	"github.com/nulla-go/Core/format/rtsp/sdp"
 )
 
 type Stream struct {

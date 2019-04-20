@@ -3,8 +3,8 @@ package ts
 import (
 	"time"
 
-	"github.com/strengine/Core/av"
-	"github.com/strengine/Core/format/ts/tsio"
+	"github.com/nulla-go/Core/av"
+	"github.com/nulla-go/Core/format/ts/tsio"
 )
 
 type Stream struct {

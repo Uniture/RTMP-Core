@@ -3,8 +3,8 @@ package mp4
 import (
 	"time"
 
-	"github.com/strengine/Core/av"
-	"github.com/strengine/Core/format/mp4/mp4io"
+	"github.com/nulla-go/Core/av"
+	"github.com/nulla-go/Core/format/mp4/mp4io"
 )
 
 type Stream struct {

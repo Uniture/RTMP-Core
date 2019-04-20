@@ -1,19 +1,41 @@
 package main
 
 import (
+	"fmt"
 	"log"
+	"os"
 	"sync"
 
-	"github.com/strengine/Core/av"
-	"github.com/strengine/Core/av/transcode"
-	"github.com/strengine/Core/cgo/ffmpeg"
+	"github.com/nulla-go/Core/av/avutil"
 
-	"github.com/strengine/Core/av/avutil"
-
-	"github.com/strengine/Core/av/pubsub"
-	"github.com/strengine/Core/format"
-	"github.com/strengine/Core/format/rtmp"
+	"github.com/nulla-go/Core/av/pubsub"
+	"github.com/nulla-go/Core/format"
+	"github.com/nulla-go/Core/format/hls"
+	"github.com/nulla-go/Core/format/rtmp"
 )
+
+type FileSystem struct {
+}
+
+//type File interface {
+//	Write(b []byte) (n int, err error)
+//	WriteString(s string) (n int, err error)
+//}
+
+func (fs FileSystem) Mkdir(name string, perm os.FileMode) (err error) {
+	err = os.Mkdir(name, perm)
+	return
+}
+
+func (fs FileSystem) IsExist(err error) (res bool) {
+	res = os.IsExist(err)
+	return
+}
+
+func (fs FileSystem) Create(name string) (hls.HlsFile, error) {
+	file, err := os.Create(name)
+	return file, err
+}
 
 func init() {
 	format.RegisterAll()
@@ -40,28 +62,35 @@ func main() {
 		}
 		l.Unlock()
 
-		findcodec := func(stream av.AudioCodecData, i int) (need bool, dec av.AudioDecoder, enc av.AudioEncoder, err error) {
-			need = true
-			dec, _ = ffmpeg.NewAudioDecoder(stream)
-			enc, _ = ffmpeg.NewAudioEncoderByName("libfdk_aac")
-			enc.SetSampleRate(stream.SampleRate())
-			enc.SetChannelLayout(av.CH_STEREO)
-			enc.SetBitrate(12000)
-			enc.SetOption("profile", "HE-AACv2")
-			return
+		hls := hls.NewHLSProcessing(&FileSystem{})
+		err := hls.Pipe(key, ch.que.Latest())
+		if err != nil {
+			fmt.Println(err)
 		}
+		//findcodec := func(stream av.AudioCodecData, i int) (need bool, dec av.AudioDecoder, enc av.AudioEncoder, err error) {
+		//need = true
+		//dec, _ = ffmpeg.NewAudioDecoder(stream)
+		//enc, err = ffmpeg.NewAudioEncoderByName("libfdk_aac")
+		//if err != nil {
+		//	log.Println("Encoder is undefined")
+		//	return
+		//}
+		//enc.SetSampleRate(stream.SampleRate())
+		//enc.SetBitrate(48000)
+		//enc.SetChannelLayout(av.CH_STEREO)
+		//enc.SetOption("profile", "HE-AACv2")
+		//return
+		//}
+		//Options: transcode.Options{
+		//		FindAudioDecoderEncoder: findcodec,
+		//	},
+		//	Demuxer: ch.que.Latest(),
+		//}
+		//outfile, _ := avutil.Create("out.ts")
+		//avutil.CopyFile(outfile, ch.que.Latest())
 
-		trans := &transcode.Demuxer{
-			Options: transcode.Options{
-				FindAudioDecoderEncoder: findcodec,
-			},
-			Demuxer: ch.que,
-		}
-		outfile, _ := avutil.Create("out.ts")
-		avutil.CopyFile(outfile, trans)
-
-		outfile.Close()
-		trans.Close()
+		//outfile.Close()
+		//		trans.Close()
 
 		// avutil.
 		// l.Lock()

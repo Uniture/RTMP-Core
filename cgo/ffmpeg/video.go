@@ -15,8 +15,8 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/strengine/Core/av"
-	"github.com/strengine/Core/codec/h264parser"
+	"github.com/nulla-go/Core/av"
+	"github.com/nulla-go/Core/codec/h264parser"
 )
 
 type VideoDecoder struct {

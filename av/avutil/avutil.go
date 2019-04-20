@@ -9,7 +9,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/strengine/Core/av"
+	"github.com/nulla-go/Core/av"
 )
 
 type HandlerDemuxer struct {
@@ -288,6 +288,7 @@ func CopyPackets(dst av.PacketWriter, src av.PacketReader) (err error) {
 		if err = dst.WritePacket(pkt); err != nil {
 			return
 		}
+		//fmt.Println(fmt.Sprintf("%v", pkt.Time))
 	}
 	return
 }

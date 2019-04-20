@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/strengine/Core/av"
-	"github.com/strengine/Core/av/avutil"
-	"github.com/strengine/Core/av/transcode"
-	"github.com/strengine/Core/cgo/ffmpeg"
-	"github.com/strengine/Core/format"
+	"github.com/nulla-go/Core/av"
+	"github.com/nulla-go/Core/av/avutil"
+	"github.com/nulla-go/Core/av/transcode"
+	"github.com/nulla-go/Core/cgo/ffmpeg"
+	"github.com/nulla-go/Core/format"
 )
 
 // need ffmpeg with libfdkaac installed
