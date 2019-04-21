@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"os"
 	"sync"
@@ -32,7 +33,7 @@ func (fs FileSystem) IsExist(err error) (res bool) {
 	return
 }
 
-func (fs FileSystem) Create(name string) (hls.HlsFile, error) {
+func (fs FileSystem) Create(name string) (io.Writer, error) {
 	file, err := os.Create(name)
 	return file, err
 }
@@ -60,10 +61,12 @@ func main() {
 			log.Println(key + " already delete processing close")
 			return
 		}
+
 		l.Unlock()
 
 		hls := hls.NewHLSProcessing(&FileSystem{})
 		err := hls.Pipe(key, ch.que.Latest())
+
 		if err != nil {
 			fmt.Println(err)
 		}
