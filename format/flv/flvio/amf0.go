@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/nulla-go/Core/utils/bits/pio"
+	"github.com/nulla-go/core/utils/bits/pio"
 )
 
 type AMF0ParseError struct {

@@ -6,8 +6,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/nulla-go/Core/av"
-	"github.com/nulla-go/Core/format/ts"
+	"github.com/nulla-go/core/av"
+	"github.com/nulla-go/core/format/ts"
 )
 
 type hlsFileSystemError struct {
@@ -49,7 +49,7 @@ func (self *hls) Pipe(name string, src av.Demuxer) error {
 	var masterPL io.Writer
 	var err error
 	// Creating new stream's folder
-	if err := self.filesys.Mkdir(name, os.ModeAppend); err != nil {
+	if err := self.filesys.Mkdir(name, os.ModePerm); err != nil {
 		return hlsFileSystemError{err, "error creating dir with name" + name}
 	}
 	// Creating master playlist
@@ -70,13 +70,13 @@ func (self *hls) Pipe(name string, src av.Demuxer) error {
 
 func (self *hls) processing(masterPlaylist io.Writer, root string, src av.Demuxer) {
 	fmt.Println("processing started")
-	streamP := root + "/steam0"
-	err := self.filesys.Mkdir(streamP, os.ModeAppend)
+	streamP := root + "/stream0"
+	err := self.filesys.Mkdir(streamP, os.ModePerm)
 	if err != nil {
 		fmt.Println("Cannot create stream dir ", err.Error())
 		return
 	}
-	var videoStreamNumber int8 = 0
+	var videoStreamNumber int8
 	codecsData, err := src.Streams()
 	if err != nil {
 		fmt.Println("Failed get streams")
@@ -98,15 +98,15 @@ func (self *hls) processing(masterPlaylist io.Writer, root string, src av.Demuxe
 	}
 
 	//	var limit time.Duration = 9 * time.Second
-	var counter time.Duration = 9 * time.Second
+	counter := 9 * time.Second
 	//	var created bool = false
 	var fileCounter int64
 
-	var currentBufer int8 = 0
-	var bufCounter int64 = 0
+	var currentBufer int8
+	var bufCounter int64
 	//	var buf1Counter int64 = 0
-	var buf0 []av.Packet = make([]av.Packet, 4096)
-	var buf1 []av.Packet = make([]av.Packet, 4096)
+	buf0 := make([]av.Packet, 4096)
+	buf1 := make([]av.Packet, 4096)
 	for {
 		var pkt av.Packet
 		//var c chan av.Packet
@@ -125,7 +125,7 @@ func (self *hls) processing(masterPlaylist io.Writer, root string, src av.Demuxe
 		} else {
 			buf1[bufCounter] = pkt
 		}
-		bufCounter += 1
+		bufCounter++
 
 		//c <- pkt
 		//packateCounter += 1
@@ -143,7 +143,7 @@ func (self *hls) processing(masterPlaylist io.Writer, root string, src av.Demuxe
 			if pkt.Time >= counter {
 				fmt.Println("Limit", counter.Seconds())
 				currentStreamFileName := fmt.Sprintf(root+"/stream%v.ts", fileCounter)
-				fileCounter += 1
+				fileCounter++
 				if currentBufer == 0 {
 					go self.writePktsToFile(currentStreamFileName, codecsData, &buf0, bufCounter)
 					currentBufer = 1

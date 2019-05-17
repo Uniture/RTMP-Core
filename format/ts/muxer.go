@@ -5,10 +5,10 @@ import (
 	"io"
 	"time"
 
-	"github.com/nulla-go/Core/av"
-	"github.com/nulla-go/Core/codec/aacparser"
-	"github.com/nulla-go/Core/codec/h264parser"
-	"github.com/nulla-go/Core/format/ts/tsio"
+	"github.com/nulla-go/core/av"
+	"github.com/nulla-go/core/codec/aacparser"
+	"github.com/nulla-go/core/codec/h264parser"
+	"github.com/nulla-go/core/format/ts/tsio"
 )
 
 var CodecTypes = []av.CodecType{av.H264, av.AAC}

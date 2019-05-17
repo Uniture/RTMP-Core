@@ -1,6 +1,6 @@
 package mp4io
 
-import "github.com/nulla-go/Core/utils/bits/pio"
+import "github.com/nulla-go/core/utils/bits/pio"
 import "time"
 
 const MOOF = Tag(0x6d6f6f66)

@@ -17,9 +17,9 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/nulla-go/Core/av"
-	"github.com/nulla-go/Core/av/avutil"
-	"github.com/nulla-go/Core/codec/aacparser"
+	"github.com/nulla-go/core/av"
+	"github.com/nulla-go/core/av/avutil"
+	"github.com/nulla-go/core/codec/aacparser"
 )
 
 const debug = false

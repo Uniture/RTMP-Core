@@ -5,10 +5,10 @@ import (
 	"io"
 	"time"
 
-	"github.com/nulla-go/Core/av"
-	"github.com/nulla-go/Core/av/avutil"
-	"github.com/nulla-go/Core/av/pktque"
-	"github.com/nulla-go/Core/av/transcode"
+	"github.com/nulla-go/core/av"
+	"github.com/nulla-go/core/av/avutil"
+	"github.com/nulla-go/core/av/pktque"
+	"github.com/nulla-go/core/av/transcode"
 )
 
 var Debug bool

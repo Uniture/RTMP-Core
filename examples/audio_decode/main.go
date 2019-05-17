@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/nulla-go/Core/av"
-	"github.com/nulla-go/Core/av/avutil"
-	"github.com/nulla-go/Core/cgo/ffmpeg"
-	"github.com/nulla-go/Core/format"
+	"github.com/nulla-go/core/av"
+	"github.com/nulla-go/core/av/avutil"
+	"github.com/nulla-go/core/cgo/ffmpeg"
+	"github.com/nulla-go/core/format"
 )
 
 // need ffmpeg installed

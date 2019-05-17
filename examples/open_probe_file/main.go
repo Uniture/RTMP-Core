@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/nulla-go/Core/av"
-	"github.com/nulla-go/Core/av/avutil"
-	"github.com/nulla-go/Core/format"
+	"github.com/nulla-go/core/av"
+	"github.com/nulla-go/core/av/avutil"
+	"github.com/nulla-go/core/format"
 )
 
 func init() {

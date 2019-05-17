@@ -15,8 +15,8 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/nulla-go/Core/av"
-	"github.com/nulla-go/Core/codec/h264parser"
+	"github.com/nulla-go/core/av"
+	"github.com/nulla-go/core/codec/h264parser"
 )
 
 type VideoDecoder struct {

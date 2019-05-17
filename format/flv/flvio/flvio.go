@@ -5,8 +5,8 @@ import (
 	"io"
 	"time"
 
-	"github.com/nulla-go/Core/av"
-	"github.com/nulla-go/Core/utils/bits/pio"
+	"github.com/nulla-go/core/av"
+	"github.com/nulla-go/core/utils/bits/pio"
 )
 
 func TsToTime(ts int32) time.Duration {

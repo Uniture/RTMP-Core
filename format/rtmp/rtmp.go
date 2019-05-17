@@ -16,11 +16,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/nulla-go/Core/av"
-	"github.com/nulla-go/Core/av/avutil"
-	"github.com/nulla-go/Core/format/flv"
-	"github.com/nulla-go/Core/format/flv/flvio"
-	"github.com/nulla-go/Core/utils/bits/pio"
+	"github.com/nulla-go/core/av"
+	"github.com/nulla-go/core/av/avutil"
+	"github.com/nulla-go/core/format/flv"
+	"github.com/nulla-go/core/format/flv/flvio"
+	"github.com/nulla-go/core/utils/bits/pio"
 )
 
 var Debug bool

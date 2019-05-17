@@ -5,14 +5,14 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/nulla-go/Core/av"
-	"github.com/nulla-go/Core/av/avutil"
-	"github.com/nulla-go/Core/codec"
-	"github.com/nulla-go/Core/codec/aacparser"
-	"github.com/nulla-go/Core/codec/fake"
-	"github.com/nulla-go/Core/codec/h264parser"
-	"github.com/nulla-go/Core/format/flv/flvio"
-	"github.com/nulla-go/Core/utils/bits/pio"
+	"github.com/nulla-go/core/av"
+	"github.com/nulla-go/core/av/avutil"
+	"github.com/nulla-go/core/codec"
+	"github.com/nulla-go/core/codec/aacparser"
+	"github.com/nulla-go/core/codec/fake"
+	"github.com/nulla-go/core/codec/h264parser"
+	"github.com/nulla-go/core/format/flv/flvio"
+	"github.com/nulla-go/core/utils/bits/pio"
 )
 
 var MaxProbePacketCount = 20

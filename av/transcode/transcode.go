@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/nulla-go/Core/av"
-	"github.com/nulla-go/Core/av/pktque"
+	"github.com/nulla-go/core/av"
+	"github.com/nulla-go/core/av/pktque"
 )
 
 var Debug bool

@@ -1,13 +1,13 @@
 package format
 
 import (
-	"github.com/nulla-go/Core/av/avutil"
-	"github.com/nulla-go/Core/format/aac"
-	"github.com/nulla-go/Core/format/flv"
-	"github.com/nulla-go/Core/format/mp4"
-	"github.com/nulla-go/Core/format/rtmp"
-	"github.com/nulla-go/Core/format/rtsp"
-	"github.com/nulla-go/Core/format/ts"
+	"github.com/nulla-go/core/av/avutil"
+	"github.com/nulla-go/core/format/aac"
+	"github.com/nulla-go/core/format/flv"
+	"github.com/nulla-go/core/format/mp4"
+	"github.com/nulla-go/core/format/rtmp"
+	"github.com/nulla-go/core/format/rtsp"
+	"github.com/nulla-go/core/format/ts"
 )
 
 func RegisterAll() {

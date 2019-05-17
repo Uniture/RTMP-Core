@@ -3,8 +3,8 @@ package mp4
 import (
 	"io"
 
-	"github.com/nulla-go/Core/av"
-	"github.com/nulla-go/Core/av/avutil"
+	"github.com/nulla-go/core/av"
+	"github.com/nulla-go/core/av/avutil"
 )
 
 var CodecTypes = []av.CodecType{av.H264, av.AAC}

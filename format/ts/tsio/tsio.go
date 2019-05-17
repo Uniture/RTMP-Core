@@ -5,7 +5,7 @@ import (
 	"io"
 	"time"
 
-	"github.com/nulla-go/Core/utils/bits/pio"
+	"github.com/nulla-go/core/utils/bits/pio"
 )
 
 const (

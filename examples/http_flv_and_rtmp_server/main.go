@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/nulla-go/Core/av/avutil"
-	"github.com/nulla-go/Core/av/pubsub"
-	"github.com/nulla-go/Core/format"
-	"github.com/nulla-go/Core/format/flv"
-	"github.com/nulla-go/Core/format/rtmp"
+	"github.com/nulla-go/core/av/avutil"
+	"github.com/nulla-go/core/av/pubsub"
+	"github.com/nulla-go/core/format"
+	"github.com/nulla-go/core/format/flv"
+	"github.com/nulla-go/core/format/rtmp"
 )
 
 func init() {

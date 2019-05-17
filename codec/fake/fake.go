@@ -1,7 +1,7 @@
 package fake
 
 import (
-	"github.com/nulla-go/Core/av"
+	"github.com/nulla-go/core/av"
 )
 
 type CodecData struct {

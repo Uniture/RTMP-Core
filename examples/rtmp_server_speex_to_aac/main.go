@@ -1,18 +1,18 @@
 package main
 
 import (
-	"github.com/nulla-go/Core/av"
-	"github.com/nulla-go/Core/av/avutil"
-	"github.com/nulla-go/Core/av/transcode"
-	"github.com/nulla-go/Core/cgo/ffmpeg"
-	"github.com/nulla-go/Core/format"
-	"github.com/nulla-go/Core/format/rtmp"
+	"github.com/nulla-go/core/av"
+	"github.com/nulla-go/core/av/avutil"
+	"github.com/nulla-go/core/av/transcode"
+	"github.com/nulla-go/core/cgo/ffmpeg"
+	"github.com/nulla-go/core/format"
+	"github.com/nulla-go/core/format/rtmp"
 )
 
 // need ffmpeg with libspeex and libfdkaac installed
 //
 // open http://www.wowza.com/resources/4.4.1/examples/WebcamRecording/FlashRTMPPlayer11/player.html
-// click connect and reCored
+// click connect and recored
 // input camera H264/SPEEX will converted H264/AAC and saved in out.ts
 
 func init() {

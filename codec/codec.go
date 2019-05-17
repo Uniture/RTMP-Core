@@ -3,8 +3,8 @@ package codec
 import (
 	"time"
 
-	"github.com/nulla-go/Core/av"
-	"github.com/nulla-go/Core/codec/fake"
+	"github.com/nulla-go/core/av"
+	"github.com/nulla-go/core/codec/fake"
 )
 
 type PCMUCodecData struct {

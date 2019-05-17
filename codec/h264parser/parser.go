@@ -4,9 +4,9 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/nulla-go/Core/av"
-	"github.com/nulla-go/Core/utils/bits"
-	"github.com/nulla-go/Core/utils/bits/pio"
+	"github.com/nulla-go/core/av"
+	"github.com/nulla-go/core/utils/bits"
+	"github.com/nulla-go/core/utils/bits/pio"
 )
 
 const (

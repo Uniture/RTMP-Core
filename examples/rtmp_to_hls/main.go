@@ -7,12 +7,12 @@ import (
 	"os"
 	"sync"
 
-	"github.com/nulla-go/Core/av/avutil"
+	"github.com/nulla-go/core/av/avutil"
 
-	"github.com/nulla-go/Core/av/pubsub"
-	"github.com/nulla-go/Core/format"
-	"github.com/nulla-go/Core/format/hls"
-	"github.com/nulla-go/Core/format/rtmp"
+	"github.com/nulla-go/core/av/pubsub"
+	"github.com/nulla-go/core/format"
+	"github.com/nulla-go/core/format/hls"
+	"github.com/nulla-go/core/format/rtmp"
 )
 
 type FileSystem struct {
@@ -34,7 +34,7 @@ func (fs FileSystem) IsExist(err error) (res bool) {
 }
 
 func (fs FileSystem) Create(name string) (io.Writer, error) {
-	file, err := os.Create(name)
+	file, err := os.OpenFile(name, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0777)
 	return file, err
 }
 
