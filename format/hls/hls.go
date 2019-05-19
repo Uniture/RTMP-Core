@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"time"
 
 	"github.com/nulla-go/core/av"
 	"github.com/nulla-go/core/format/ts"
+	"github.com/nulla-go/core/cgo/ffmpeg"
 )
 
 type hlsFileSystemError struct {
@@ -37,17 +37,22 @@ type hlsDestination interface {
 
 type hls struct {
 	filesys hlsDestination
+	urlpath string
+	videoDecoder *ffmpeg.VideoDecoder
 }
 
-func NewHLSProcessing(filesys hlsDestination) (chls *hls) {
+func NewHLSProcessing(filesys hlsDestination, urlpathtochunks string) (chls *hls) {
 	chls = &hls{}
 	chls.filesys = filesys
+	chls.urlpath = urlpathtochunks
 	return
 }
 
 func (self *hls) Pipe(name string, src av.Demuxer) error {
 	var masterPL io.Writer
 	var err error
+
+	
 	// Creating new stream's folder
 	if err := self.filesys.Mkdir(name, os.ModePerm); err != nil {
 		return hlsFileSystemError{err, "error creating dir with name" + name}
@@ -88,6 +93,13 @@ func (self *hls) processing(masterPlaylist io.Writer, root string, src av.Demuxe
 			fmt.Print(" is a audio stream")
 			fmt.Println()
 		} else if cData.Type().IsVideo() {
+			self.videoDecoder, err = ffmpeg.NewVideoDecoder(cData)
+			if err !=nil{
+				fmt.Println("Video Decoder creation failed ... ", err.Error())
+			}
+			if err!=nil{
+				fmt.Println("Video dencoder creation failed")
+			}
 			fmt.Print(" is a video stream")
 			fmt.Println()
 			videoStreamNumber = int8(streamN)
@@ -97,9 +109,6 @@ func (self *hls) processing(masterPlaylist io.Writer, root string, src av.Demuxe
 		}
 	}
 
-	//	var limit time.Duration = 9 * time.Second
-	counter := 9 * time.Second
-	//	var created bool = false
 	var fileCounter int64
 
 	var currentBufer int8
@@ -107,16 +116,18 @@ func (self *hls) processing(masterPlaylist io.Writer, root string, src av.Demuxe
 	//	var buf1Counter int64 = 0
 	buf0 := make([]av.Packet, 4096)
 	buf1 := make([]av.Packet, 4096)
+	_, err = ffmpeg.NewVideoEncoder(av.H264)
+	if err != nil{
+		fmt.Println("Video encoder createin failed", err.Error())
+	}
 	for {
 		var pkt av.Packet
-		//var c chan av.Packet
-		//c := make(chan av.Packet, 10)
+
 		var err error
 		if pkt, err = src.ReadPacket(); err != nil {
 			if err == io.EOF {
 				break
 			}
-			//			close(c)
 			return
 		}
 
@@ -127,43 +138,42 @@ func (self *hls) processing(masterPlaylist io.Writer, root string, src av.Demuxe
 		}
 		bufCounter++
 
-		//c <- pkt
-		//packateCounter += 1
-		//		fmt.Println("Packet sent to channel")
+
 		if bufCounter%20 == 0 {
 			fmt.Println(bufCounter)
 		}
-		//if !created {
-		//	fmt.Println("Writing started")
-		//	go self.writePktsToFile(streamP+"/stream0.ts", c, codecsData)
-		//	created = true
-		//}
-		//fmt.Println(pkt.Idx)
+	
 		if pkt.Idx == videoStreamNumber {
-			if pkt.Time >= counter {
-				fmt.Println("Limit", counter.Seconds())
+			frame,err := self.videoDecoder.Decode(pkt.Data)
+			if err !=nil{
+				fmt.Println("Failed frame decode ", err.Error())
+			}
+			if frame != nil{
+				(*frame).Free()
+				fmt.Println("Frame ")
+			}
+			
+			
+			
+			if pkt.IsKeyFrame {
+				fmt.Println("Key frame")
 				currentStreamFileName := fmt.Sprintf(root+"/stream%v.ts", fileCounter)
 				fileCounter++
 				if currentBufer == 0 {
-					go self.writePktsToFile(currentStreamFileName, codecsData, &buf0, bufCounter)
+					go self.writePktsToFile(currentStreamFileName, codecsData, &buf0, bufCounter, masterPlaylist)
 					currentBufer = 1
 				} else {
-					go self.writePktsToFile(currentStreamFileName, codecsData, &buf1, bufCounter)
+					go self.writePktsToFile(currentStreamFileName, codecsData, &buf1, bufCounter, masterPlaylist)
 					currentBufer = 0
 				}
 				bufCounter = 0
-
-				counter += 9 * time.Second
 			}
 		}
-
-		//fmt.Println(pkt.Time)
 	}
-
 }
 
 func (self *hls) writePktsToFile(
-	filePath string, streams []av.CodecData, pkts *[]av.Packet, length int64) {
+	filePath string, streams []av.CodecData, pkts *[]av.Packet, length int64, masterPlaylist io.Writer) {
 
 	writer, err := self.filesys.Create(filePath)
 	if err != nil {
@@ -171,12 +181,6 @@ func (self *hls) writePktsToFile(
 		return
 	}
 	tsMuxer := ts.NewMuxer(writer)
-	//for i, cData := range streams{
-	//	err = tsMuxer.newStream(s.Data)
-	//	if err != nil{
-	//		fmt.Println("failed codec data ", i, err.Error())
-	//	}
-	//}
 
 	err = tsMuxer.WriteHeader(streams)
 	if err != nil {
@@ -184,7 +188,6 @@ func (self *hls) writePktsToFile(
 		return
 	}
 
-	//var pktCpunter int64
 
 	for i, pkt := range *pkts {
 		if i > int(length) {
@@ -195,22 +198,16 @@ func (self *hls) writePktsToFile(
 			fmt.Println("Cannot write Packet")
 		}
 	}
-	//	for _, pkt := range *pkts {
 
-	//select {
-	//case <-c:
-	//	fmt.Println("Packate got")
-	//}
-
-	//	}
-
-	//	for pkt := range c {
-	//		}
+	duration := (*pkts)[length-1].Time - (*pkts)[0].Time;
 
 	err = tsMuxer.WriteTrailer()
 	if err != nil {
 		fmt.Println("Cannot write trailer ", err.Error())
 		return
 	}
+
+	fmt.Printf("Chunk duration - %v",duration.Seconds())
+	// masterPlaylist.Write(byte(""))
 
 }

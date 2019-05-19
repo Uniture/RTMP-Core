@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 	"sync"
-
+	"net/http"
 	"github.com/nulla-go/core/av/avutil"
 
 	"github.com/nulla-go/core/av/pubsub"
@@ -64,41 +64,12 @@ func main() {
 
 		l.Unlock()
 
-		hls := hls.NewHLSProcessing(&FileSystem{})
+		hls := hls.NewHLSProcessing(&FileSystem{}, "http://localhost:9000/")
 		err := hls.Pipe(key, ch.que.Latest())
 
 		if err != nil {
 			fmt.Println(err)
 		}
-		//findcodec := func(stream av.AudioCodecData, i int) (need bool, dec av.AudioDecoder, enc av.AudioEncoder, err error) {
-		//need = true
-		//dec, _ = ffmpeg.NewAudioDecoder(stream)
-		//enc, err = ffmpeg.NewAudioEncoderByName("libfdk_aac")
-		//if err != nil {
-		//	log.Println("Encoder is undefined")
-		//	return
-		//}
-		//enc.SetSampleRate(stream.SampleRate())
-		//enc.SetBitrate(48000)
-		//enc.SetChannelLayout(av.CH_STEREO)
-		//enc.SetOption("profile", "HE-AACv2")
-		//return
-		//}
-		//Options: transcode.Options{
-		//		FindAudioDecoderEncoder: findcodec,
-		//	},
-		//	Demuxer: ch.que.Latest(),
-		//}
-		//outfile, _ := avutil.Create("out.ts")
-		//avutil.CopyFile(outfile, ch.que.Latest())
-
-		//outfile.Close()
-		//		trans.Close()
-
-		// avutil.
-		// l.Lock()
-		// d.Lock()
-
 	}
 
 	server.HandlePublish = func(conn *rtmp.Conn) {
@@ -125,6 +96,10 @@ func main() {
 		l.Unlock()
 		ch.que.Close()
 	}
+
+	http.Handle("/", http.FileServer(http.Dir(".")))
+
+	go http.ListenAndServe(":9000", nil)
 
 	server.ListenAndServe()
 }

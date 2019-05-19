@@ -122,3 +122,49 @@ func NewVideoDecoder(stream av.CodecData) (dec *VideoDecoder, err error) {
 	dec = _dec
 	return
 }
+
+
+type VideoEncoder struct{
+	ff        *ffctx
+}
+
+func (self * VideoEncoder) Encode(img *VideoFrame)(pkt []byte, err error){
+	//
+}
+
+func NewVideoEncoder(codecID av.CodecType) (enc * VideoEncoder, err error){
+	
+	// var CCodecID int
+	// switch(codecID){
+	// case av.H264:
+	// 	CCodecID = C.AV_CODEC_ID_H264
+	// 	break;
+	// default:
+	// 	err = fmt.Errorf("ffmpeg: cannot find video encoder codecID=%d", codecID)
+	// 	return
+	// }
+	var id uint32
+
+	switch codecID{
+	case av.H264:
+		id = C.AV_CODEC_ID_H264
+		break
+	default:
+		err = fmt.Errorf("ffmpeg: wrong video coder=%d", codecID)
+		return
+	}
+
+	enc = &VideoEncoder{}
+	codec := C.avcodec_find_encoder(id)
+	if codec == nil{
+		err = fmt.Errorf("ffmpeg: cannot find video encoder codecID=%d", id)
+		return
+	}
+	enc.ff, err = newFFCtxByCodec(codec)
+	if err!=nil{
+		return
+	}
+	enc.ff.ff 
+
+	return
+}
