@@ -1,4 +1,4 @@
-Create options fot Encoder:
+Create options for Encoder:
   Bitrate, Width, Height, GOP, max_b_frames, Picture Format?
 
 Fix deprecated functions
